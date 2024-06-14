@@ -21,18 +21,24 @@ export const getBugs = createAsyncThunk("bugs/getBugs", async (p_id) => {
 });
 
 export const addBug = createAsyncThunk("bugs/addBug", async (data) => {
-    const { desc, p_id, uid } = data;
+    const { desc, p_id, uid, displayName } = data;
     const docRef = await addDoc(collection(db, "bugs"), {
         description: desc,
         resolved: false,
-        uid: uid,
+        createdBy: {
+            uid: uid,
+            displayName: displayName,
+        },
         p_id: p_id,
     });
     return {
         id: docRef.id,
         description: desc,
         resolved: false,
-        uid: uid,
+        createdBy: {
+            uid: uid,
+            displayName: displayName,
+        },
         p_id: p_id,
     };
 });

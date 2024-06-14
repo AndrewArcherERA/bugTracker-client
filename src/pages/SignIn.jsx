@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { auth } from "../api/firebase-config";
-import { signIn, signOut } from "../store/user";
+import { signIn } from "../store/user";
 import { useNavigate } from "react-router-dom";
+import { Box, Button } from "@mui/material";
 
 function SignIn() {
     const dispatch = useDispatch();
@@ -16,16 +17,19 @@ function SignIn() {
         if (data) navigate("/projects");
     }, [data]);
 
-    function handleSignOut() {
-        dispatch(signOut(auth));
-    }
-
     return (
-        <div>
-            <button onClick={handleSignIn}>Sign In</button>
-
-            <button onClick={handleSignOut}>Sign Out</button>
-        </div>
+        <Box
+            p={2}
+            bgcolor={"secondary.main"}
+            borderRadius={3}
+            display={"flex"}
+            alignItems={"center"}
+            justifyContent={"center"}
+        >
+            <Button variant='contained' onClick={handleSignIn}>
+                Sign In with google
+            </Button>
+        </Box>
     );
 }
 
