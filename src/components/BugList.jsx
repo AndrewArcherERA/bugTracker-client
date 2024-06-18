@@ -23,14 +23,14 @@ function BugList() {
     }, []);
     return (
         <>
-            <Box display={"flex"} flexDirection={"column"} minWidth={"100%"}>
+            <Box display={"flex"} flexDirection={"column"} minWidth={"100%"} maxHeight={"300px"} sx={{overflowY: "scroll"}}>
                 <Box
                     width={"100%"}
                     py={1}
                     bgcolor={"primary.main"}
                     color={"black"}
                 >
-                    <Grid container>
+                    <Grid container >
                         <Grid item xs={2} justifyContent={"flex-start"}>
                             <Typography>Created By</Typography>
                         </Grid>
